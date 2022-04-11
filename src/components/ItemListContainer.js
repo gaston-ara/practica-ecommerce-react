@@ -1,6 +1,8 @@
+import ItemList from "./ItemList";
+
 function ItemListContainer(){
     return<>
-        <h2>Holis</h2>
+        <ItemList/>
     </>
 }
 export default ItemListContainer;
