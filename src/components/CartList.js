@@ -12,9 +12,9 @@ const CartList = (props) => {
             <td>
                 x{props.quantity}
             </td>
-            <td>$100</td>
+            <td>${props.totalItem}</td>
             <td>
-                <button className='btn-delete' onClick={()=>{props.delCart(props.id)}}>Eliminar</button>
+                <button className='btn-delete' onClick={()=>{props.removeItem(props.id)}}>Eliminar</button>
             </td>
         </tr>
     )

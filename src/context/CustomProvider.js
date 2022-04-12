@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Provider } from './cartContext';
 
 const CustomProvider = ({ children }) => {
-    const [item, setItem] = useState([]);
+    const [cart, setCart] = useState([]);
     const [contador, setContador] = useState(0);
+    const [totalQuant, setTotalQuant] = useState(0);
+    const [itemPrice, setItemPrice] = useState(0);
+    const [isInCart, setIsInCart] = useState(false);
 
+    // Agregar item al carrito
     const addItem = (id, image, title, price) => {
         let producto = {
             item: {
@@ -16,16 +20,37 @@ const CustomProvider = ({ children }) => {
             quantity: contador
         }
 
-        item? setItem([...item, producto]): setItem([producto]);
-      
-        console.log(producto);
+        let check = cart.findIndex(object => object.item.id === producto.item.id)
+
+        if (check === -1) {
+            cart? setCart([...cart, producto]): setCart(producto);
+            setTotalQuant(totalQuant + producto.quantity);
+        } else {
+            setIsInCart(!isInCart);
+            cart[check].quantity += producto.quantity;
+            setTotalQuant(totalQuant + producto.quantity);
+        }
+    }
+    //Eliminar item del carrito
+    const removeItem = (itemId) => {
+        setCart(cart.filter((item, index) => index !== itemId));
+        setTotalQuant(totalQuant - cart[itemId].quantity);
+    }
+    //Calcular precio total
+    const getItemPrice = (cart) => {
+        setItemPrice(cart.reduce((acc, value) => acc + value.item.price * value.quantity, 0));
+    }
+    //Vaciar Carrito
+    const clear = () => {
+        setCart([]);
+        setTotalQuant(0);
     }
     useEffect(() => {
-        console.log(item);
-    }, [item])
+        getItemPrice(cart);
+    }, [cart, isInCart])
 
     return (
-        <Provider value={{ addItem, setContador, item }}>
+        <Provider value={{ addItem, setContador, cart, removeItem, totalQuant, itemPrice, clear }}>
             {children}
         </Provider>
     )

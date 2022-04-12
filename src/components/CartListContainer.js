@@ -3,12 +3,8 @@ import { useContext } from 'react'
 import cartContext from '../context/cartContext'
 
 function CartListContainer(props) {
-    const { item } = useContext(cartContext)
+    const { removeItem, itemPrice, clear } = useContext(cartContext)
 
-    const delCart = (id) => {
-        console.log('click ' + id);
-        console.log(item[id]);
-    }
     return (
         <div className='cartListContainer'>
             <table className='table'>
@@ -30,10 +26,18 @@ function CartListContainer(props) {
                                 price={item.item.price}
                                 title={item.item.title}
                                 quantity={item.quantity}
-                                delCart={delCart}
+                                totalItem={item.item.price * item.quantity}
+                                removeItem={removeItem}
                             />)
                     })) : (<h1>Cargando...</h1>)}
-
+                    <tr>
+                        <button onClick={clear}>Vaciar Carrito</button>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td></td>
+                        <td>${itemPrice}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
