@@ -42,7 +42,6 @@ const CheckOut = () => {
                 handleSubmit={handleSubmit}
             />) : (<ThankYouPage nombre={nombre} apellido={apellido} email={email} direccion={direccion} orden={ordenId} />)}
         </div>
-
     )
 }
 
