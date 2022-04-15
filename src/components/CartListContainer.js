@@ -1,6 +1,7 @@
 import CartList from './CartList'
 import { useContext } from 'react'
 import cartContext from '../context/cartContext'
+import { NavLink } from 'react-router-dom'
 
 function CartListContainer(props) {
     const { removeItem, itemPrice, clear } = useContext(cartContext)
@@ -31,15 +32,14 @@ function CartListContainer(props) {
                             />)
                     })) : (<h1>Cargando...</h1>)}
                     <tr>
-                        <button onClick={clear}>Vaciar Carrito</button>
-                    </tr>
-                    <tr>
                         <td>Total</td>
                         <td></td>
                         <td>${itemPrice}</td>
                     </tr>
                 </tbody>
             </table>
+            <button onClick={clear}>Vaciar Carrito</button>
+            <NavLink to="/form">Finalizar compra</NavLink>
         </div>
     )
 }

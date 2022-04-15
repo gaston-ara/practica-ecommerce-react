@@ -85,3 +85,28 @@
   width: 100px;
   text-align: center;
 }
+.form-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form{
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  margin: 30px 0;
+}
+.btn{
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(45, 45, 45);
+  color: whitesmoke;
+  margin: 20px auto;
+  text-decoration: none;
+  padding: 5px;
+}

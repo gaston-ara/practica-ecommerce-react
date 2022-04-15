@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 
-
 function ItemDetailContainer() {
     const itemId = useParams();
     const [items, setItems] = useState([]);
@@ -20,8 +19,9 @@ function ItemDetailContainer() {
         let detalle = items.find(item => item.id === itemId.categorieId);
         setDetail(detalle);
     }
+
     useEffect(() => {
-        fetching();
+        fetching();            
     }, [])
     useEffect(() => {
         findData();

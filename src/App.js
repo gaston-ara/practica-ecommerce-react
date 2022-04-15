@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Cart from './pages/Cart'
 import ItemDetailContainer from './components/ItemDetailContainer';
 import CustomProvider from './context/CustomProvider';
+import CheckOut from './pages/CheckOut';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/categories/:categorieId" element={<ItemDetailContainer />} />
+          <Route exact path="/form" element={<CheckOut />} />
           <Route exact path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </BrowserRouter>

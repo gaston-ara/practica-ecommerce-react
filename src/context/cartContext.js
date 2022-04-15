@@ -1,7 +1,6 @@
 import { createContext } from "react";
 
-const Cart = []
-const contexto = createContext(Cart);
+const contexto = createContext();
 
 export const { Provider } = contexto;
 export default contexto;
